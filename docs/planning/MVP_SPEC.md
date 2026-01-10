@@ -1,3 +1,6 @@
+**🔍 ZOOM: PRODUCT_MAP → MVP Rules & Constraints**
+
+
 # Opportunity Navigator - MVP Specification
 
 **Version:** 1.0

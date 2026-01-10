@@ -1,3 +1,6 @@
+**🔍 ZOOM: PRODUCT_MAP → Detailed Feature Specifications**
+
+
 # Opportunity Navigator - Features Guide
 
 **Comprehensive Feature Specifications**

@@ -1,259 +1,110 @@
 # Opportunity Navigator
 
-**AI Opportunity Navigator → Community Bridge → Continuity Reserve**
+| Repo Map | Purpose | Authority |
+| --- | --- | --- |
+| docs/PRODUCT_MAP.md | Canonical product model (three-layer system) | Source of truth |
+| docs/MASTER_PLAN.md | End-to-end behavior and execution | Source of truth |
+| docs/ux/WIREFRAMES.md | ESW wireframes for all routes | Derived |
+| docs/ux/SITEMAP.md | Route map tied to PRODUCT_MAP | Derived |
+| docs/planning/MVP_SPEC.md | MVP definition and success criteria | Derived |
+| docs/architecture/ARCHITECTURE.md | Data model + API contracts | Architecture-only |
 
-Help people understand what help exists, bridge short-term gaps with community support, and avoid financial free-fall when systems move too slowly.
+| System Entities | Description | Persisted? | User-facing label |
+| --- | --- | --- | --- |
+| User | Account + helper preferences | Yes | Your Account |
+| Request | Community help need ($10-$25, 48-72h) | Yes | Request |
+| Helper | Community member offering capacity | Yes | Helper |
+| Match | Request-Helper pairing | Yes | Match |
+| CommunityCredit | Dual-dimensional score (capacity + reliability) | Yes | Community Credit |
+| Reserve | Continuity Reserve allocation ($10-$25) | Yes | Reserve |
+| Program | AI-matched resource (timelines, eligibility) | No (external) | Program |
+| Conversation | AI Navigator chat history | Yes | Conversation |
 
----
+| Routes Index | Mode | Writes | Reads | Wireframe location |
+| --- | --- | --- | --- | --- |
+| / | PUBLIC | None | None | docs/ux/WIREFRAMES.md (Home) |
+| /navigator | LAYER 1 | Conversation | Programs | docs/ux/WIREFRAMES.md (AI Navigator) |
+| /request | LAYER 2 | Request | Request status | docs/ux/WIREFRAMES.md (Request Form) |
+| /request/:requestId | LAYER 2 | Match confirmation | Request, Match | docs/ux/WIREFRAMES.md (Request Status) |
+| /helper-preferences | LAYER 2 | Helper capacity, preferences | Helper profile | docs/ux/WIREFRAMES.md (Helper Preferences) |
+| /reserve | LAYER 3 | Reserve application | Reserve status | docs/ux/WIREFRAMES.md (Reserve Application) |
+| /reserve/:reserveId | LAYER 3 | Reserve resolution | Reserve tracking | docs/ux/WIREFRAMES.md (Reserve Status) |
+| /community-credit | CREDIT | None | Credit score, history | docs/ux/WIREFRAMES.md (Credit Dashboard) |
+| /settings | SETTINGS | Account, location, privacy | User profile | docs/ux/WIREFRAMES.md (Settings) |
 
-## The Problem
+# CANONICAL PRODUCT TRUTH (NO-DRIFT)
+The system is THREE-LAYER.
 
-Most people don't fail because they are irresponsible. They fail because:
+1) LAYER 1 (AI Navigator) provides CLARITY with zero risk.
+   - Conversational UI helps users find resources.
+   - Max 5 clarifying questions, honest timelines (2-6 weeks typical).
+   - Identifies gaps and opens door to Layer 2.
 
-- **Help exists but takes weeks** - Benefits, programs, resources have long processing times
-- **Small issues interrupt work/school/stability** - $50 shortfall can spiral into crisis
-- **Asking for help feels humiliating** - Public call-outs create shame
-- **Financial tools punish** - Payday loans, overdraft fees, predatory lending
-- **Fragmented systems don't talk** - Food banks, rent assistance, job programs operate in silos
+2) LAYER 2 (Community Bridge) provides IMMEDIACY with low risk.
+   - Request form for short-term needs ($10-$25, 48-72h).
+   - Helper matching algorithm (geography + capacity).
+   - Four forms of help: Time, Items, Cash, Access.
+   - Helper agency: form, visibility, expectation.
 
-**The Reality:** Most crises are **timing problems**, not money problems. Continuity matters more than cash.
+3) LAYER 3 (Continuity Reserve) is LAST RESORT with tight control.
+   - Very small amounts ($10-$25 max).
+   - One active use at a time.
+   - Only when community matching fails (24h elapsed).
+   - No interest, no fees.
 
----
+4) COMMUNITY CREDIT is the GLUE.
+   - Private score tracking capacity extended + reliability demonstrated.
+   - Unlocks priority matching, longer windows, fewer cooldowns.
+   - Never public, never leaderboards, never flexing.
 
-## The Solution
+Terminology rules:
+- Internal system term: Three-Layer Funnel (architecture only).
+- User-facing term: AI Navigator / Community Bridge / Continuity Reserve.
+- Community Credit is PRIVATE (no public scores).
+- Helpers have AGENCY (choose form, visibility, expectation).
+- No predatory fees, no public shaming, no hidden terms.
 
-Opportunity Navigator is a **three-layer system** that sits between crisis and collapse:
-
-### Layer 1: AI Opportunity Navigator
-**Purpose:** Clarity, dignity, trust | **Risk:** Zero
-
-- User describes their need
-- AI asks up to 5 clarifying questions
-- Surfaces likely programs/resources
-- Explains timelines honestly (2-6 weeks typical)
-- Identifies gaps
-
-**Key:** Honesty builds credibility. "This doesn't solve today" → opens door to Layer 2.
-
-### Layer 2: Community Bridge
-**Purpose:** Immediacy, human reliability | **Risk:** Low
-
-- When AI finds a gap, offers community help options
-- Peer-to-peer support (time, items, cash, access)
-- Helper chooses: form (what), visibility (anonymous/visible), expectation (gift/repay/pay-forward)
-- No public shaming, no harassment
-- Tracking without pressure
-
-**Forms of Help:**
-- **Time:** Rides, errands, childcare swap
-- **Items:** Tools, supplies, household goods
-- **Cash:** Very small ($10-$25)
-- **Access:** Introductions, know-how
-
-### Layer 3: Continuity Reserve
-**Purpose:** Prevent failure when peers can't help | **Risk:** Tightly controlled
-
-- Very small amounts ($10-$25)
-- Short windows (48-72 hours)
-- One active use at a time
-- No interest, no upfront fees
-- Last resort only
-
-**Not a loan fund.** It's a bridge to prevent collapse.
-
----
+## Gut Check (Yes/No)
+- Is this a loan? NO (Continuity Reserve is a micro-credit safety net)
+- Is Layer 1 required? NO (users can skip to Layer 2)
+- Can helpers see personal info? ONLY IF you choose "Visible"
+- Is Community Credit public? NO (always private)
+- What happens if reserve isn't repaid? Access pauses (no aggressive collection)
+- Do helpers get paid? NO (voluntary community support)
 
 ## Core Innovation
+**Three-layer system sits between crisis and collapse:**
 
-### Community Credit (The Glue)
+**Layer 1 (Clarity):**
+- Purpose: Understand what help exists
+- Risk: Zero
+- Outcome: Program matching + honest timelines
 
-**Community Credit is NOT money.** It's a private record of real contribution and reliability.
+**Layer 2 (Immediacy):**
+- Purpose: Bridge short-term gaps with community support
+- Risk: Low (community-sized)
+- Outcome: Helper matching (time, items, cash, access)
 
-**Two Dimensions:**
-1. **Capacity Extended** - How much support someone has given
-2. **Reliability Demonstrated** - Follow-through, showing up, resolving cleanly
+**Layer 3 (Safety Net):**
+- Purpose: Prevent failure when peers can't help
+- Risk: Tightly controlled (last resort)
+- Outcome: Micro-credit safety net ($10-$25)
 
-**What It Unlocks:**
-- Priority when you need help
-- Faster matching
-- Longer continuity windows
-- Fewer cooldowns
-- Access to nonprofit grants (Phase 2)
-- Partner matching pools (Phase 2)
+## Key Principle
+**Most crises are TIMING problems, not money problems.**
 
-**Key Principle:** No public scores, no leaderboards, no flexing. Private trust metric.
-
----
-
-## Key Features
-
-### 1. AI Navigator (Front Door)
-
-| Feature | Description |
-|---------|-------------|
-| **Conversational UI** | User describes need in plain language |
-| **Clarifying Questions** | Max 5 questions to understand situation |
-| **Program Matching** | Surfaces benefits, resources, options |
-| **Honest Timelines** | "This usually takes 2-6 weeks" |
-| **Gap Detection** | "That doesn't solve today" → offers Community Bridge |
-
-### 2. Community Bridge
-
-| Feature | Description |
-|---------|-------------|
-| **Request Form** | Specific, short-term need |
-| **Helper Matching** | Algorithm matches based on capacity + geography |
-| **Helper Agency** | Helper chooses form, visibility, expectation |
-| **No Harassment** | No public reminders, no shaming |
-| **Systemic Consequences** | Access pauses, limits tighten quietly (no personal chase) |
-
-### 3. Continuity Reserve
-
-| Feature | Description |
-|---------|-------------|
-| **Small Amounts** | $10-$25 max |
-| **Short Windows** | 48-72 hours |
-| **One at a Time** | One active use per user |
-| **No Interest** | Zero fees, zero interest |
-| **Last Resort** | Only when community can't help |
-
-### 4. Community Credit System
-
-| Feature | Description |
-|---------|-------------|
-| **Private Score** | Not public, not shared |
-| **Dual Tracking** | Capacity + reliability |
-| **Unlock Benefits** | Priority, access, matching |
-| **Nonprofit Integration** | Partner grants for high-credit users |
+Continuity matters more than cash. This system:
+- Helps people understand their options (Layer 1)
+- Bridges short-term gaps through community (Layer 2)
+- Protects continuity when needed (Layer 3)
+- Rewards reliability with Community Credit (all layers)
 
 ---
 
-## Target Users
+**Tagline:** Clarity. Community. Continuity.
 
-### Primary
-- **Budget-Constrained Individuals** - Living paycheck-to-paycheck
-- **Crisis-Facing Households** - Temporary setbacks (car repair, medical bill)
-- **Underbanked/Unbanked** - No access to traditional credit
+**Documentation:** See [docs/PRODUCT_MAP.md](./docs/PRODUCT_MAP.md) for complete feature specifications.
 
-### Secondary
-- **Community Helpers** - People who want to help neighbors in crisis
-- **Nonprofits** - Organizations seeking to distribute aid effectively
-- **Employers** - Companies offering employee financial wellness
+**Technology Stack:** React + TypeScript + Next.js 14 | Python + FastAPI | PostgreSQL + Redis | OpenAI API
 
----
-
-## Why This Works
-
-| User Benefit | System Benefit |
-|--------------|----------------|
-| **Clarity on options** | Reduces 311 calls, case worker load |
-| **Peer support feels justified** | Builds trust, not dependency |
-| **Last-resort safety net** | Prevents spiral into predatory loans |
-| **Community credit** | Rewards helpers, incentivizes reliability |
-| **No public shaming** | Preserves dignity |
-
----
-
-## Business Model
-
-### Revenue (Reinvested, Not Extracted)
-
-| Stream | Description |
-|--------|-------------|
-| **Optional Membership** | $3-$5/month (not required) |
-| **Post-Resolution Fee** | Small fee (e.g., $0.50) after help received |
-| **Round-Ups** | Optional spare change donations |
-| **Partner Matching** | Dollar-for-dollar matching from sponsors |
-
-**Key Principle:** No one pays to ask for help. Revenue supports the system, not profit extraction.
-
-### Reserve Funding
-
-- Platform fees (reinvested)
-- Recycled repayments (voluntary)
-- Partner matching pools (Phase 2)
-
-**Auto-Protection:** System tightens automatically when liquidity drops (smaller caps, helper-first routing, temporary pauses).
-
----
-
-## Market Opportunity
-
-- **US households lacking emergency savings:** 32% have $0, median is $500
-- **Households unable to cover $400 emergency:** 29%
-- **Market need:** 55M budget-conscious households
-- **Social lending proof:** SoLo Funds funded $250M+ with 94% repayment rate
-
-**Gap:** No platform combines AI guidance, community support, and micro-credit in one dignified system.
-
----
-
-## Competitive Advantages
-
-| Advantage | Defensibility |
-|-----------|---------------|
-| **Three-layer system** | Very High (unique combination) |
-| **Community credit** | High (data moat) |
-| **Nonprofit partnerships** | High (trust layer) |
-| **No predatory framing** | High (ethical moat) |
-| **Trust portability** | Medium (can be copied) |
-
----
-
-## Technology Stack
-
-- **Frontend:** React + TypeScript
-- **Backend:** Python + FastAPI
-- **Database:** PostgreSQL + Redis
-- **AI:** OpenAI API or Claude for conversational navigator
-- **Payments:** Stripe (for optional fees)
-- **Matching Algorithm:** Custom (geography + capacity + reliability)
-
----
-
-## Legal & Ethical Design
-
-**Non-negotiable constraints:**
-- ❌ No predatory fees
-- ❌ No public shaming
-- ❌ No hidden terms
-- ❌ No aggressive collection
-- ❌ No selling data
-
-**Core principle:** Dignity-first design. Help people, don't exploit them.
-
-**See:** [RISK_MANAGEMENT.md](./RISK_MANAGEMENT.md) for full risk analysis.
-
----
-
-## Getting Started
-
-This repository contains comprehensive documentation:
-
-| Document | Description |
-|----------|-------------|
-| [FEATURES.md](./FEATURES.md) | Detailed feature specifications |
-| [ARCHITECTURE.md](./ARCHITECTURE.md) | Technical design and system architecture |
-| [ROADMAP.md](./ROADMAP.md) | Phased implementation plan with timelines |
-| [MVP_SPEC.md](./MVP_SPEC.md) | Minimum viable product definition |
-| [MARKET_ANALYSIS.md](./MARKET_ANALYSIS.md) | Market research and competitive analysis |
-| [RISK_MANAGEMENT.md](./RISK_MANAGEMENT.md) | Financial risk controls and safeguards |
-
----
-
-## Status
-
-**Phase:** Documentation and Planning
-**Next Milestone:** MVP Development + Legal/Compliance Review
-
----
-
-## One-Line Test
-
-If this sentence makes sense, the system is aligned:
-
-> "We help people understand their options, bridge short-term gaps through community support, and protect continuity—and the system sustains itself through reinvested value."
-
----
-
-**Clarity. Community. Continuity.**
+**Status:** Ready for Development
