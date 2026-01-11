@@ -2,12 +2,12 @@
 
 | Repo Map | Purpose | Authority |
 | --- | --- | --- |
-| docs/PRODUCT_MAP.md | Canonical product model (three-layer system) | Source of truth |
-| docs/MASTER_PLAN.md | End-to-end behavior and execution | Source of truth |
-| docs/ux/WIREFRAMES.md | ESW wireframes for all routes | Derived |
-| docs/ux/SITEMAP.md | Route map tied to PRODUCT_MAP | Derived |
-| docs/planning/MVP_SPEC.md | MVP definition and success criteria | Derived |
-| docs/architecture/ARCHITECTURE.md | Data model + API contracts | Architecture-only |
+| [docs/PRODUCT_MAP.md](docs/PRODUCT_MAP.md) | Canonical product model (three-layer system) | Source of truth |
+| [docs/MASTER_PLAN.md](docs/MASTER_PLAN.md) | End-to-end behavior and execution | Source of truth |
+| [docs/ux/WIREFRAMES.md](docs/ux/WIREFRAMES.md) | ESW wireframes for all routes | Derived |
+| [docs/ux/SITEMAP.md](docs/ux/SITEMAP.md) | Route map tied to PRODUCT_MAP | Derived |
+| [docs/planning/MVP_SPEC.md](docs/planning/MVP_SPEC.md) | MVP definition and success criteria | Derived |
+| [docs/architecture/ARCHITECTURE.md](docs/architecture/ARCHITECTURE.md) | Data model + API contracts | Architecture-only |
 
 | System Entities | Description | Persisted? | User-facing label |
 | --- | --- | --- | --- |
@@ -22,15 +22,15 @@
 
 | Routes Index | Mode | Writes | Reads | Wireframe location |
 | --- | --- | --- | --- | --- |
-| / | PUBLIC | None | None | docs/ux/WIREFRAMES.md (Home) |
-| /navigator | LAYER 1 | Conversation | Programs | docs/ux/WIREFRAMES.md (AI Navigator) |
-| /request | LAYER 2 | Request | Request status | docs/ux/WIREFRAMES.md (Request Form) |
-| /request/:requestId | LAYER 2 | Match confirmation | Request, Match | docs/ux/WIREFRAMES.md (Request Status) |
-| /helper-preferences | LAYER 2 | Helper capacity, preferences | Helper profile | docs/ux/WIREFRAMES.md (Helper Preferences) |
-| /reserve | LAYER 3 | Reserve application | Reserve status | docs/ux/WIREFRAMES.md (Reserve Application) |
-| /reserve/:reserveId | LAYER 3 | Reserve resolution | Reserve tracking | docs/ux/WIREFRAMES.md (Reserve Status) |
-| /community-credit | CREDIT | None | Credit score, history | docs/ux/WIREFRAMES.md (Credit Dashboard) |
-| /settings | SETTINGS | Account, location, privacy | User profile | docs/ux/WIREFRAMES.md (Settings) |
+| / | PUBLIC | None | None | [WIREFRAMES.md](docs/ux/WIREFRAMES.md) (Home) |
+| /navigator | LAYER 1 | Conversation | Programs | [WIREFRAMES.md](docs/ux/WIREFRAMES.md) (AI Navigator) |
+| /request | LAYER 2 | Request | Request status | [WIREFRAMES.md](docs/ux/WIREFRAMES.md) (Request Form) |
+| /request/:requestId | LAYER 2 | Match confirmation | Request, Match | [WIREFRAMES.md](docs/ux/WIREFRAMES.md) (Request Status) |
+| /helper-preferences | LAYER 2 | Helper capacity, preferences | Helper profile | [WIREFRAMES.md](docs/ux/WIREFRAMES.md) (Helper Preferences) |
+| /reserve | LAYER 3 | Reserve application | Reserve status | [WIREFRAMES.md](docs/ux/WIREFRAMES.md) (Reserve Application) |
+| /reserve/:reserveId | LAYER 3 | Reserve resolution | Reserve tracking | [WIREFRAMES.md](docs/ux/WIREFRAMES.md) (Reserve Status) |
+| /community-credit | CREDIT | None | Credit score, history | [WIREFRAMES.md](docs/ux/WIREFRAMES.md) (Credit Dashboard) |
+| /settings | SETTINGS | Account, location, privacy | User profile | [WIREFRAMES.md](docs/ux/WIREFRAMES.md) (Settings) |
 
 # CANONICAL PRODUCT TRUTH (NO-DRIFT)
 The system is THREE-LAYER.
